@@ -1,0 +1,15 @@
+# PCMS 开发环境配置
+# 请通过环境变量设置敏感信息，不要硬编码在此文件中
+
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:123456}
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:pianet}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+
+pianet:
+  deepseek:
+    api-key: ${DEEPSEEK_API_KEY:}

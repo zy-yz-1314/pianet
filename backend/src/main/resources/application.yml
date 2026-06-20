@@ -1,0 +1,27 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: pianet-backend
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:pianet}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME:}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+
+# DeepSeek AI 配置：未配置 api-key 时自动进入演示模式
+pianet:
+  deepseek:
+    api-key: ${DEEPSEEK_API_KEY:}
+    url: ${DEEPSEEK_API_URL:https://api.deepseek.com/v1/chat/completions}
+    system-prompt: "你是一个专业的医疗咨询助手，专注于健康咨询、症状分析、用药指导、疾病科普。禁止进行疾病确诊，禁止替代医生诊断。若用户症状严重或紧急，需明确提示建议及时前往医院就诊。回答简洁、专业、易懂。"
